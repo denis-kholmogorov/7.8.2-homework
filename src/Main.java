@@ -22,9 +22,9 @@ public class Main {
             terminal.getFlights().stream().forEach(flights::add);
         }
 
-        flights.stream().filter(f -> f.getDate().after(now) && f.getDate().before(afterTwoHours))
+        flights.stream().filter(f -> f.getDate().after(now) && f.getDate().before(afterTwoHours) && f.getType() == Flight.Type.DEPARTURE)
                .sorted(Comparator.comparing(Flight::getDate))
-               .forEach(flight -> System.out.println(simpleformat.format(flight.getDate()) + " - " + flight.getAircraft()));
+               .forEach(flight -> System.out.println(simpleformat.format(flight.getDate()) + " - " + flight.getAircraft() + " - " + flight.getType()));
 
 
     }
